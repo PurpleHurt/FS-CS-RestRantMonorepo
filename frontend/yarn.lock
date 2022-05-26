@@ -3481,6 +3481,11 @@
   "resolved" "https://registry.npmjs.org/commander/-/commander-4.1.1.tgz"
   "version" "4.1.1"
 
+"comment@^0.0.2":
+  "integrity" "sha1-FvecWsBInirHRUGL7dW+p7a4lKc="
+  "resolved" "https://registry.npmjs.org/comment/-/comment-0.0.2.tgz"
+  "version" "0.0.2"
+
 "common-tags@^1.8.0":
   "integrity" "sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw=="
   "resolved" "https://registry.npmjs.org/common-tags/-/common-tags-1.8.0.tgz"
