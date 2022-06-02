@@ -4,6 +4,19 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
+    canAddPlace() {
+      return this.role === 'admin' || this.role === 'reviewer'
+    }
+
+    canEditPlace() {
+      return this.role === 'admin' || this.role === 'reviewer'
+    }
+
+    canDeletePlace() {
+      return this.role === 'admin' || this.roll === 'reviewer'
+
+    }
+
 
     static associate({ Comment }) {
       User.hasMany(Comment, { as: 'author', foreignKey: 'author_id' })
