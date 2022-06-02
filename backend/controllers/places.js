@@ -18,6 +18,21 @@ router.post('/', async (req, res) => {
 })
 
 
+  
+
+
+
+  
+    
+
+
+      
+
+
+  
+
+
+
 router.get('/', async (req, res) => {
     const places = await Place.findAll()
     res.json(places)
@@ -45,39 +60,14 @@ router.get('/:placeId', async (req, res) => {
 })
 
 router.put('/:placeId', async (req, res) => {
-    let placeId = Number(req.params.placeId)
-    if (isNaN(placeId)) {
-        res.status(404).json({ message: `Invalid id "${placeId}"` })
-    } else {
-        const place = await Place.findOne({
-            where: { placeId: placeId },
-        })
-        if (!place) {
-            res.status(404).json({ message: `Could not find place with id "${placeId}"` })
-        } else {
-            Object.assign(place, req.body)
-            await place.save()
-            res.json(place)
-        }
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to edit places'})
     }
 })
 
 router.delete('/:placeId', async (req, res) => {
-    let placeId = Number(req.params.placeId)
-    if (isNaN(placeId)) {
-        res.status(404).json({ message: `Invalid id "${placeId}"` })
-    } else {
-        const place = await Place.findOne({
-            where: {
-                placeId: placeId
-            }
-        })
-        if (!place) {
-            res.status(404).json({ message: `Could not find place with id "${placeId}"` })
-        } else {
-            await place.destroy()
-            res.json(place)
-        }
+    if(req.currentUser?.role !== 'admin'){
+        return res.status(403).json({ message: 'You are not allowed to delete places'})
     }
 })
 
